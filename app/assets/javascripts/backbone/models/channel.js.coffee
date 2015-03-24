@@ -7,8 +7,15 @@ class Kandan.Models.Channel extends Backbone.Model
       activities = new Kandan.Collections.Activities([], {channel_id: response.id})
       activities.add(response.activities)
       @activities = activities
+      @topics = {1: 'fancytopic'}
       @moreActivities = response.more_activities
     response
+
+  getTopicId: (topicName) ->
+    _.invert(@topics)[topicName]
+
+  getTopicName: (topicId) ->
+    @topics[topicId]
 
   isDestroyable: ->
     current_user = _(Kandan.Helpers.Users.all()).find (u) ->

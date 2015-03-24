@@ -1,2 +1,3 @@
-<textarea class="chat-input"></textarea>
+<textarea class="topic-input" placeholder="Topic"></textarea>
+<textarea class="chat-input" placeholder="Message"></textarea>
 <button class="post">Post</button>

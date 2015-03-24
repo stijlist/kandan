@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150324010249) do
+ActiveRecord::Schema.define(:version => 20150324011844) do
 
   create_table "activities", :force => true do |t|
     t.text     "content"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20150324010249) do
     t.string   "action"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "topic_id"
   end
 
   create_table "attachments", :force => true do |t|

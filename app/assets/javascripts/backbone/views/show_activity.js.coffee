@@ -4,7 +4,10 @@ class Kandan.Views.ShowActivity extends Backbone.View
   className: 'activity'
 
   render: ()->
+    # console.log(@options.channel.getTopicName)
     activity = @options.activity.toJSON()
+    channel = @options.channel
+    activity.topic = _.escape(channel.getTopicName(@options.activity.get('topic_id')))
     activity.content = _.escape(activity.content)
     activity.avatarUrl = Kandan.Helpers.Avatars.urlFor(@options.activity, {size: 30})
 

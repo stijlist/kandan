@@ -77,7 +77,9 @@ class Kandan.Helpers.Channels
 
   @newActivityView: (activityAttributes) ->
     activity = new Kandan.Models.Activity(activityAttributes)
-    activityView = new Kandan.Views.ShowActivity(activity: activity)
+    activityView = new Kandan.Views.ShowActivity
+      activity: activity
+      channel: Kandan.Helpers.Channels.getCollection().get(activityAttributes.channel_id)
     activityView
 
   @createChannelIfNotExists: (activityAttributes) ->
@@ -115,7 +117,6 @@ class Kandan.Helpers.Channels
       Kandan.Plugins.Notifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content)
 
       @setPaginationData(activityAttributes.channel_id)
-
 
   @addNotification: (activityAttributes) ->
     $channelElements = $(".channel-activities")

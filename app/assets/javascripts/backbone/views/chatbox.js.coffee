@@ -22,13 +22,16 @@ class Kandan.Views.Chatbox extends Backbone.View
 
   postMessage: (event)->
     $chatbox = $(event.target).parent().find(".chat-input")
+    $topicbox = $(event.target).parent().find(".topic-input")
     chatInput = $chatbox.val()
+    topicInput = $topicbox.val()
     return false if chatInput.trim().length==0
 
     activity = new Kandan.Models.Activity({
       'content':    chatInput,
       'action':     'message',
       'channel_id': @channel.get('id')
+      'topic_id': @channel.getTopicId(topicInput)
     })
 
     $chatbox.val("")

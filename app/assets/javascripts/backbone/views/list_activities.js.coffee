@@ -9,6 +9,10 @@ class Kandan.Views.ListActivities extends Backbone.View
 
     if @channel.activities
       for activity in @channel.activities.models
-        activityView = new Kandan.Views.ShowActivity({activity: activity, state: Kandan.Helpers.Activities.HISTORY_STATE})
+        activityView = new Kandan.Views.ShowActivity({
+          activity: activity,
+          state: Kandan.Helpers.Activities.HISTORY_STATE,
+          channel: @channel
+        })
         $(@el).append(activityView.render().el)
     @
